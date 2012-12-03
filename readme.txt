@@ -5,8 +5,10 @@ Author URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-i
 Plugin URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Tags: iFrame, Images, Gallery, plugin
 Requires at least: 3.0
-Tested up to: 3.4
-Stable tag: 6.0
+Tested up to: 3.5
+Stable tag: 6.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
 iframe images gallery is a simple wordpress plugin to create horizontal image slideshow. Horizontal bar will be display below the images to scroll.
 
@@ -64,7 +66,11 @@ Tested UoTo 3.4
 Fixed plug-in directory violations issue
 
 6.0
-New demo link, www.gopiplus.com
+New demo link, http://www.gopiplus.com
+
+6.1
+Tested up to 3.5
+Option to add the gallery directly in the theme file.
 
 == Upgrade Notice ==
 
@@ -82,4 +88,8 @@ Tested UoTo 3.4
 Fixed plug-in directory violations issue
 
 6.0
-New demo link, www.gopiplus.com
+New demo link, http://www.gopiplus.com
+
+6.1
+Tested up to 3.5
+Option to add the gallery directly in the theme file.

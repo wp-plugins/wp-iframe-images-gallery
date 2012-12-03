@@ -5,57 +5,23 @@ Plugin Name: iFrame Images Gallery
 Plugin URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Description: iframe images gallery is a simple wordpress plugin to create horizontal image slideshow. Horizontal bar will be display below the images to scroll.
 Author: Gopi.R
-Version: 6.0
+Version: 6.1
 Author URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Donate link: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
 global $wpdb, $wp_version;
 define("WP_iframe_TABLE", $wpdb->prefix . "iframe_plugin");
 
-function iframe_Images_Gallery($string) 
+function iframe( $group = "Group1", $width = "600" , $height = "220" ) 
 {
-	
-	echo $string;
-	$img = "";
-	$iframe_random  = "";
-	
-	if(!is_numeric(@$iframe_width)) { @$iframe_width = 600 ;}
-	if(!is_numeric(@$iframe_height)) { @$iframe_height = 300; }
-	
-	$sSql = "select iframe_path,iframe_link,iframe_target,iframe_title from ".WP_iframe_TABLE." where 1=1";
-	if($iframe_type <> ""){ $sSql = $sSql . " and iframe_type='".$iframe_type."'"; }
-	if(@$iframe_random == "YES"){ $sSql = $sSql . " ORDER BY RAND()"; }else{ $sSql = $sSql . " ORDER BY iframe_order"; }
-	
-	$data = $wpdb->get_results($sSql);
-	
-	$iframe_count = 0;
-	if ( ! empty($data) ) 
-	{
-		foreach ( $data as $data ) 
-		{
-			$img = $img. '<td>';
-			if($data->iframe_link <> "") { $img = $img. '<a href="'.$data->iframe_link.'" target="'.$data->iframe_target.'">'; }
-			$img = $img. '<img border="0" alt="'.$data->iframe_title.'" src="'.$data->iframe_path.'" />';
-			if($data->iframe_link <> "") { $img = $img. '</a>'; }
-			$img = $img. '</td>';
-			//$img = $img. '<td></td>';
-			$iframe_count++;
-		}
-	}	
-	?>
-    <div>
-    <div style="height: <?php echo $iframe_height; ?>px;margin: 20px auto 8px;right: auto;vertical-align: middle;width: <?php echo $iframe_width; ?>px;">
-    <div style="height: 100px;margin: 0 auto;padding: 0;">
-    <div style="height: <?php echo $iframe_height; ?>px;overflow: auto;width: 100%;">
-    <table cellspacing="0" cellpadding="0" border="0"><tbody><tr><?php echo $img; ?></tr></tbody></table>
-    </div>
-    </div>
-    </div>
-    </div>
-<?php
-
-
+	$arr = array();
+	$arr["group"] = $group;
+	$arr["width"] = $width;
+	$arr["height"] = $height;
+	echo iframe_shortcode($arr);
 }
 
 function iframe_install() 
@@ -262,38 +228,31 @@ function iframe_admin_options()
         <?php $i = $i+1; } ?>
       </table>
     </form>
-  </div>
-   <br /> Short code : [IFRAMEIMAGES:GROUP=Group1:W=600:H=220] <br />
-  
-<ul>
-    <li>Check official website for info <a href="http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/" target="_blank">click here.</a></li>
-</ul>
+  	</div>
+	<br /> Short code : [iframeimages group="Group1" width="600" height="220"] <br />
+	<ul>
+		<li>Check official website for information <a href="http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/" target="_blank">click here.</a></li>
+	</ul>
 </div>
 <?php
 }
 
-add_filter('the_content','iframe_Show_Filter');
-
-function iframe_Show_Filter($content)
-{
-	return 	preg_replace_callback('/\[IFRAMEIMAGES:(.*?)\]/sim','iframe_Show_Filter_Callback',$content);
-}
-
-function iframe_Show_Filter_Callback($matches) 
+function iframe_shortcode( $atts ) 
 {
 	global $wpdb;
 	$iframe_random = "";
 	$img = "";
 	$dreamscape = "";
-	$scode = $matches[1];
-	//[IFRAMEIMAGES:CATEGORY=Group1:W=600:H=300]
+		
+	// [iframeimages group="Group1" width="600" height="220"]
+	if ( ! is_array( $atts ) )
+	{
+		return '';
+	}
+	$iframe_type = $atts['group'];
+	$iframe_width = $atts['width'];
+	$iframe_height = $atts['height'];
 	
-	list($iframe_type_main, $iframe_width_main, $iframe_height_main) = split("[:.-]", $scode);
-
-	list($iframe_type_cap, $iframe_type) = split('[=.-]', $iframe_type_main);
-	list($iframe_width_cap, $iframe_width) = split('[=.-]', $iframe_width_main);
-	list($iframe_height_cap, $iframe_height) = split('[=.-]', $iframe_height_main);
-
 	if(!is_numeric(@$iframe_width)) { @$iframe_width = 600 ;}
 	if(!is_numeric(@$iframe_height)) { @$iframe_height = 300; }
 	
@@ -347,9 +306,10 @@ if (is_admin())
 
 function iframe_deactivation()
 {
-	
+	// No action required.
 }
 
+add_shortcode( 'iframeimages', 'iframe_shortcode' );
 register_activation_hook(__FILE__, 'iframe_install');
 add_action('admin_menu', 'iframe_add_to_menu');
 register_deactivation_hook(__FILE__, 'iframe_deactivation');
