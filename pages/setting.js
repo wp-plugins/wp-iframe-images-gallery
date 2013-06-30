@@ -18,21 +18,27 @@
 
 function iframe_submit()
 {
-	if(document.iframe_form.iframe_path.value=="")
+	if(document.iframe_form.iframe_path.value == "")
 	{
-		alert("Please enter the image path.")
+		alert("Please enter image path (URL).")
 		document.iframe_form.iframe_path.focus();
 		return false;
 	}
-	if((document.iframe_form.iframe_order.value!="") && isNaN(document.iframe_form.iframe_order.value))
+	else if(document.iframe_form.iframe_link.value == "")
 	{
-		alert("Please enter the display order, only number.")
+		alert("Please enter target link.")
+		document.iframe_form.iframe_link.focus();
+		return false;
+	}
+	else if((document.iframe_form.iframe_order.value != "") && isNaN(document.iframe_form.iframe_order.value))
+	{
+		alert("Please enter display order, only number.")
 		document.iframe_form.iframe_order.focus();
 		return false;
 	}
-	if(document.iframe_form.iframe_type.value=="")
+	else if(document.iframe_form.iframe_type.value == "" || document.iframe_form.iframe_type.value == "Select")
 	{
-		alert("Please select the gallery group.")
+		alert("Please select gallery group.")
 		document.iframe_form.iframe_type.focus();
 		return false;
 	}
@@ -42,14 +48,14 @@ function iframe_delete(id)
 {
 	if(confirm("Do you want to delete this record?"))
 	{
-		document.frm_iframe_display.action="options-general.php?page=wp-iframe-images-gallery/wp-iframe-images-gallery.php&AC=DEL&DID="+id;
+		document.frm_iframe_display.action="options-general.php?page=iframe-images-gallery&ac=del&did="+id;
 		document.frm_iframe_display.submit();
 	}
 }	
 
 function iframe_redirect()
 {
-	window.location = "options-general.php?page=wp-iframe-images-gallery/wp-iframe-images-gallery.php";
+	window.location = "options-general.php?page=iframe-images-gallery";
 }
 
 function iframe_help()

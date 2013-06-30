@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-
 Author URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Plugin URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Tags: iFrame, Images, Gallery, plugin
-Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 6.1
+Requires at least: 3.2
+Tested up to: 3.6
+Stable tag: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -72,6 +72,12 @@ New demo link, http://www.gopiplus.com
 Tested up to 3.5
 Option to add the gallery directly in the theme file.
 
+= 7.0 =
+
+Tested up to 3.6
+New admin interface.
+Added few security features.
+
 == Upgrade Notice ==
 
 1.0				
@@ -93,3 +99,9 @@ New demo link, http://www.gopiplus.com
 6.1
 Tested up to 3.5
 Option to add the gallery directly in the theme file.
+
+= 7.0 =
+
+Tested up to 3.6
+New admin interface.
+Added few security features.
