@@ -1,11 +1,10 @@
 <?php
-
 /*
 Plugin Name: iFrame Images Gallery
 Plugin URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Description: iframe images gallery is a simple wordpress plugin to create horizontal image slideshow. Horizontal bar will be display below the images to scroll.
 Author: Gopi.R
-Version: 7.0
+Version: 7.1
 Author URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Donate link: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 License: GPLv2 or later
@@ -14,11 +13,19 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 global $wpdb, $wp_version;
 define("WP_iframe_TABLE", $wpdb->prefix . "iframe_plugin");
-
-define("WP_iframe_UNIQUE_NAME", "iframe-images-gallery");
-define("WP_iframe_TITLE", "iFrame Images Gallery");
-define('WP_iframe_LINK', 'Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/">click here</a>');
 define('WP_iframe_FAV', 'http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/');
+
+if ( ! defined( 'WP_iframe_BASENAME' ) )
+	define( 'WP_iframe_BASENAME', plugin_basename( __FILE__ ) );
+	
+if ( ! defined( 'WP_iframe_PLUGIN_NAME' ) )
+	define( 'WP_iframe_PLUGIN_NAME', trim( dirname( WP_iframe_BASENAME ), '/' ) );
+	
+if ( ! defined( 'WP_iframe_PLUGIN_URL' ) )
+	define( 'WP_iframe_PLUGIN_URL', WP_PLUGIN_URL . '/' . WP_iframe_PLUGIN_NAME );
+	
+if ( ! defined( 'WP_iframe_ADMIN_URL' ) )
+	define( 'WP_iframe_ADMIN_URL', get_option('siteurl') . '/wp-admin/options-general.php?page=iframe-images-gallery' );
 
 function iframe( $group = "Group1", $width = "600" , $height = "220" ) 
 {
@@ -47,7 +54,7 @@ function iframe_install()
 		$sSql = $sSql . "`iframe_extra2` VARCHAR( 100 ) NOT NULL ,";
 		$sSql = $sSql . "`iframe_date` datetime NOT NULL default '0000-00-00 00:00:00' ,";
 		$sSql = $sSql . "PRIMARY KEY ( `iframe_id` )";
-		$sSql = $sSql . ")";
+		$sSql = $sSql . ") ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 		$wpdb->query($sSql);
 		
 		$IsSql = "INSERT INTO `". WP_iframe_TABLE . "` (`iframe_path`, `iframe_link`, `iframe_target` , `iframe_title` , `iframe_order` , `iframe_status` , `iframe_type` , `iframe_date`)"; 
@@ -139,7 +146,8 @@ function iframe_shortcode( $atts )
 
 function iframe_add_to_menu() 
 {
-	add_options_page('iFrame Images Gallery', 'iFrame Images Gallery', 'manage_options', 'iframe-images-gallery', 'iframe_admin_options' );
+	add_options_page(__('iFrame Images Gallery', 'iframe-images'), 
+						__('iFrame Images Gallery', 'iframe-images'), 'manage_options', 'iframe-images-gallery', 'iframe_admin_options' );
 }
 
 if (is_admin()) 
@@ -152,6 +160,12 @@ function iframe_deactivation()
 	// No action required.
 }
 
+function iframe_textdomain() 
+{
+	  load_plugin_textdomain( 'iframe-images', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'iframe_textdomain');
 add_shortcode( 'iframeimages', 'iframe_shortcode' );
 register_activation_hook(__FILE__, 'iframe_install');
 add_action('admin_menu', 'iframe_add_to_menu');

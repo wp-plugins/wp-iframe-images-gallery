@@ -18,7 +18,7 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
 	
 	if ($result != '1')
 	{
-		?><div class="error fade"><p><strong>Oops, selected details doesn't exist (1).</strong></p></div><?php
+		?><div class="error fade"><p><strong><?php _e('Oops, selected details doesnt exist', 'iframe-images'); ?></strong></p></div><?php
 	}
 	else
 	{
@@ -36,10 +36,9 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
 			
 			//	Set success message
 			$iframe_success_msg = TRUE;
-			$iframe_success = __('Selected record was successfully deleted.', WP_iframe_UNIQUE_NAME);
+			$iframe_success = __('Selected record was successfully deleted.', 'iframe-images');
 		}
 	}
-	
 	if ($iframe_success_msg == TRUE)
 	{
 		?><div class="updated fade"><p><strong><?php echo $iframe_success; ?></strong></p></div><?php
@@ -48,73 +47,70 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
 ?>
 <div class="wrap">
   <div id="icon-edit" class="icon32 icon32-posts-post"></div>
-    <h2><?php echo WP_iframe_TITLE; ?><a class="add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=iframe-images-gallery&amp;ac=add">Add New</a></h2>
+    <h2><?php _e('iFrame Images Gallery', 'iframe-images'); ?>
+	<a class="add-new-h2" href="<?php echo WP_iframe_ADMIN_URL; ?>&amp;ac=add"><?php _e('Add New', 'iframe-images'); ?></a></h2>
     <div class="tool-box">
 	<?php
 		$sSql = "SELECT * FROM `".WP_iframe_TABLE."` order by iframe_type, iframe_order";
 		$myData = array();
 		$myData = $wpdb->get_results($sSql, ARRAY_A);
 		?>
-		<script language="JavaScript" src="<?php echo get_option('siteurl'); ?>/wp-content/plugins/wp-iframe-images-gallery/pages/setting.js"></script>
+		<script language="JavaScript" src="<?php echo WP_iframe_PLUGIN_URL; ?>/pages/setting.js"></script>
 		<form name="frm_iframe_display" method="post">
       <table width="100%" class="widefat" id="straymanage">
         <thead>
           <tr>
             <th class="check-column" scope="row"><input type="checkbox" name="iframe_group_item[]" /></th>
-			<th scope="col">Title (Alt Text)</th>
-            <th scope="col">URL</th>
-			<th scope="col">Type</th>
-			<th scope="col">Target</th>
-            <th scope="col">Order</th>
-            <th scope="col">Display</th>
+			<th scope="col"><?php _e('Title (Alt Text)', 'iframe-images'); ?></th>
+            <th scope="col"><?php _e('URL', 'iframe-images'); ?></th>
+			<th scope="col"><?php _e('Type', 'iframe-images'); ?></th>
+			<th scope="col"><?php _e('Target', 'iframe-images'); ?></th>
+            <th scope="col"><?php _e('Order', 'iframe-images'); ?></th>
+            <th scope="col"><?php _e('Display', 'iframe-images'); ?></th>
           </tr>
         </thead>
 		<tfoot>
           <tr>
             <th class="check-column" scope="row"><input type="checkbox" name="iframe_group_item[]" /></th>
-			<th scope="col">Title (Alt Text)</th>
-			<th scope="col">Type</th>
-            <th scope="col">URL</th>
-			<th scope="col">Target</th>
-            <th scope="col">Order</th>
-            <th scope="col">Display</th>
+			<th scope="col"><?php _e('Title (Alt Text)', 'iframe-images'); ?></th>
+            <th scope="col"><?php _e('URL', 'iframe-images'); ?></th>
+			<th scope="col"><?php _e('Type', 'iframe-images'); ?></th>
+			<th scope="col"><?php _e('Target', 'iframe-images'); ?></th>
+            <th scope="col"><?php _e('Order', 'iframe-images'); ?></th>
+            <th scope="col"><?php _e('Display', 'iframe-images'); ?></th>
           </tr>
         </tfoot>
 		<tbody>
 			<?php 
 			$i = 0;
-			$displayisthere = FALSE;
-			foreach ($myData as $data)
+			if(count($myData) > 0 )
 			{
-				if($data['iframe_status'] == 'YES') 
+				foreach ($myData as $data)
 				{
-					$displayisthere = TRUE; 
+					?>
+					<tr class="<?php if ($i&1) { echo'alternate'; } else { echo ''; }?>">
+						<td align="left"><input type="checkbox" value="<?php echo $data['iframe_id']; ?>" name="iframe_group_item[]"></td>
+						<td>
+						<?php echo stripslashes($data['iframe_title']); ?>
+						<div class="row-actions">
+						<span class="edit"><a title="Edit" href="<?php echo WP_iframe_ADMIN_URL; ?>&amp;ac=edit&amp;did=<?php echo $data['iframe_id']; ?>"><?php _e('Edit', 'iframe-images'); ?></a> | </span>
+						<span class="trash"><a onClick="javascript:iframe_delete('<?php echo $data['iframe_id']; ?>')" href="javascript:void(0);"><?php _e('Delete', 'iframe-images'); ?></a></span> 
+						</div>
+						</td>
+						<td><a target="_blank" href="<?php echo $data['iframe_path']; ?>"><?php echo $data['iframe_path']; ?></a></td>
+						<td><?php echo $data['iframe_type']; ?></td>
+						<td><?php echo $data['iframe_target']; ?></td>
+						<td><?php echo $data['iframe_order']; ?></td>
+						<td><?php echo $data['iframe_status']; ?></td>
+					</tr>
+					<?php 
+					$i = $i+1; 
 				}
-				?>
-				<tr class="<?php if ($i&1) { echo'alternate'; } else { echo ''; }?>">
-					<td align="left"><input type="checkbox" value="<?php echo $data['iframe_id']; ?>" name="iframe_group_item[]"></th>
-					<td>
-					<?php echo stripslashes($data['iframe_title']); ?>
-					<div class="row-actions">
-						<span class="edit"><a title="Edit" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=iframe-images-gallery&amp;ac=edit&amp;did=<?php echo $data['iframe_id']; ?>">Edit</a> | </span>
-						<span class="trash"><a onClick="javascript:iframe_delete('<?php echo $data['iframe_id']; ?>')" href="javascript:void(0);">Delete</a></span> 
-					</div>
-					</td>
-					<td><a target="_blank" href="<?php echo $data['iframe_path']; ?>" target="_blank"><?php echo $data['iframe_path']; ?></a></td>
-					<td><?php echo $data['iframe_type']; ?></td>
-					<td><?php echo $data['iframe_target']; ?></td>
-					<td><?php echo $data['iframe_order']; ?></td>
-					<td><?php echo $data['iframe_status']; ?></td>
-				</tr>
-				<?php 
-				$i = $i+1; 
-				} 
-			?>
-			<?php 
-			if ($displayisthere == FALSE) 
-			{ 
-				?><tr><td colspan="7" align="center">No records available with display status (YES).</td></tr><?php 
-			} 
+			}
+			else
+			{
+				?><tr><td colspan="7" align="center"><?php _e('No records available', 'iframe-images'); ?></td></tr><?php 
+			}
 			?>
 		</tbody>
         </table>
@@ -123,17 +119,19 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
       </form>	
 	  <div class="tablenav">
 	  <h2>
-	  <a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=iframe-images-gallery&amp;ac=add">Add New</a>
-	  <!--<a class="button add-new-h2" href="<?php echo get_option('siteurl'); ?>/wp-admin/options-general.php?page=iframe-images-gallery&amp;ac=set">Widget setting</a>-->
-	  <a class="button add-new-h2" target="_blank" href="<?php echo WP_iframe_FAV; ?>">Help</a>
+	  <a class="button add-new-h2" href="<?php echo WP_iframe_ADMIN_URL; ?>&amp;ac=add"><?php _e('Add New', 'iframe-images'); ?></a>
+	  <a class="button add-new-h2" target="_blank" href="<?php echo WP_iframe_FAV; ?>"><?php _e('Help', 'iframe-images'); ?></a>
 	  </h2>
 	  </div>
 	  <div style="height:5px;"></div>
-	<h3>Plugin configuration option</h3>
+	<h3><?php _e('Plugin configuration option', 'iframe-images'); ?></h3>
 	<ol>
-		<li>Add directly in to the theme using PHP code.</li>
-		<li>Add the plugin in the posts or pages using short code.</li>
+		<li><?php _e('Add directly in to the theme using PHP code.', 'iframe-images'); ?></li>
+		<li><?php _e('Add the plugin in the posts or pages using short code.', 'iframe-images'); ?></li>
 	</ol>
-	  <p class="description"><?php echo WP_iframe_LINK; ?></p>
+	<p class="description">
+		<?php _e('Check official website for more information', 'iframe-images'); ?>
+		<a target="_blank" href="<?php echo WP_iframe_FAV; ?>"><?php _e('click here', 'iframe-images'); ?></a>
+	</p>
 	</div>
 </div>

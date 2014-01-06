@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-
 Author URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Plugin URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Tags: iFrame, Images, Gallery, plugin
-Requires at least: 3.2
-Tested up to: 3.6
-Stable tag: 7.0
+Requires at least: 3.4
+Tested up to: 3.8
+Stable tag: 7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -48,27 +48,34 @@ iframe images gallery is a simple wordpress plugin to create horizontal image sl
 
 == Screenshots ==
 
-1. http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
+1. Admin http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
+
+1. Front End http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 
 == Changelog ==
 
-1.0		
+= 1.0 =
+
 First version.
 
+= 3.0 =
 
-3.0		
 Tested UoTo 3.3
 
-4.0		
+= 4.0 =
+
 Tested UoTo 3.4
 
-5.0
+= 5.0 =
+
 Fixed plug-in directory violations issue
 
-6.0
+= 6.0 =
+
 New demo link, http://www.gopiplus.com
 
-6.1
+= 6.1 =
+
 Tested up to 3.5
 Option to add the gallery directly in the theme file.
 
@@ -77,26 +84,38 @@ Option to add the gallery directly in the theme file.
 Tested up to 3.6
 New admin interface.
 Added few security features.
+
+= 7.1 =
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (iframe-images.po) available in the languages folder. Translators Welcome.
+3. Supports network multisite website (Manual table creation required).
 
 == Upgrade Notice ==
 
-1.0				
+= 1.0 =
+		
 First version.
 
-
-3.0		
+= 3.0 =
+		
 Tested UoTo 3.3
 
-4.0		
+= 4.0 =
+
 Tested UoTo 3.4
 
-5.0
+= 5.0 =
+
 Fixed plug-in directory violations issue
 
-6.0
+= 6.0 =
+
 New demo link, http://www.gopiplus.com
 
-6.1
+= 6.1 =
+
 Tested up to 3.5
 Option to add the gallery directly in the theme file.
 
@@ -105,3 +124,10 @@ Option to add the gallery directly in the theme file.
 Tested up to 3.6
 New admin interface.
 Added few security features.
+
+= 7.1 =
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (iframe-images.po) available in the languages folder. Translators Welcome.
+3. Supports network multisite website (Manual table creation required).
