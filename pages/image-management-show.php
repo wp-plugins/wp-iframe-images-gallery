@@ -1,3 +1,4 @@
+<?php if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); } ?>
 <?php
 // Form submitted, check the data
 if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes')
@@ -64,7 +65,6 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
 			<th scope="col"><?php _e('Title (Alt Text)', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('URL', 'iframe-images'); ?></th>
 			<th scope="col"><?php _e('Type', 'iframe-images'); ?></th>
-			<th scope="col"><?php _e('Target', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('Order', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('Display', 'iframe-images'); ?></th>
           </tr>
@@ -75,7 +75,6 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
 			<th scope="col"><?php _e('Title (Alt Text)', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('URL', 'iframe-images'); ?></th>
 			<th scope="col"><?php _e('Type', 'iframe-images'); ?></th>
-			<th scope="col"><?php _e('Target', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('Order', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('Display', 'iframe-images'); ?></th>
           </tr>
@@ -99,7 +98,6 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
 						</td>
 						<td><a target="_blank" href="<?php echo $data['iframe_path']; ?>"><?php echo $data['iframe_path']; ?></a></td>
 						<td><?php echo $data['iframe_type']; ?></td>
-						<td><?php echo $data['iframe_target']; ?></td>
 						<td><?php echo $data['iframe_order']; ?></td>
 						<td><?php echo $data['iframe_status']; ?></td>
 					</tr>
@@ -109,7 +107,7 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
 			}
 			else
 			{
-				?><tr><td colspan="7" align="center"><?php _e('No records available', 'iframe-images'); ?></td></tr><?php 
+				?><tr><td colspan="6" align="center"><?php _e('No records available', 'iframe-images'); ?></td></tr><?php 
 			}
 			?>
 		</tbody>

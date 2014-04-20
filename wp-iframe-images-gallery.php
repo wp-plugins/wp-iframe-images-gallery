@@ -3,13 +3,15 @@
 Plugin Name: iFrame Images Gallery
 Plugin URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Description: iframe images gallery is a simple wordpress plugin to create horizontal image slideshow. Horizontal bar will be display below the images to scroll.
-Author: Gopi.R
-Version: 7.1
+Author: Gopi Ramasamy
+Version: 7.2
 Author URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Donate link: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
+
+if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You are not allowed to call this page directly.'); }
 
 global $wpdb, $wp_version;
 define("WP_iframe_TABLE", $wpdb->prefix . "iframe_plugin");

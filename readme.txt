@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-i
 Plugin URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Tags: iFrame, Images, Gallery, plugin
 Requires at least: 3.4
-Tested up to: 3.8
-Stable tag: 7.1
+Tested up to: 3.9
+Stable tag: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -92,6 +92,10 @@ Added few security features.
 Plugin *.po file (iframe-images.po) available in the languages folder. Translators Welcome.
 3. Supports network multisite website (Manual table creation required).
 
+= 7.2 =
+
+1. Tested up to 3.9
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -131,3 +135,7 @@ Added few security features.
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (iframe-images.po) available in the languages folder. Translators Welcome.
 3. Supports network multisite website (Manual table creation required).
+
+= 7.2 =
+
+1. Tested up to 3.9
