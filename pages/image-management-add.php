@@ -136,7 +136,7 @@ if ($iframe_error_found == FALSE && strlen($iframe_success) > 0)
       <p><?php _e('This is to group the images. Select your gallery group.', 'iframe-images'); ?></p>
       <label for="tag-display-status"><?php _e('Display status', 'iframe-images'); ?></label>
       <select name="iframe_status" id="iframe_status">
-        <option value='YES'>Yes</option>
+        <option value='YES' selected="selected">Yes</option>
         <option value='NO'>No</option>
       </select>
       <p><?php _e('Do you want the picture to show in your galler?', 'iframe-images'); ?></p>

@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-i
 Plugin URI: http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/
 Tags: iFrame, Images, Gallery, plugin
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 7.2
+Tested up to: 4.0
+Stable tag: 7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -29,22 +29,19 @@ iframe images gallery is a simple wordpress plugin to create horizontal image sl
 *   No java-script.
 *   Manual scroll to see all the images.
 
-[Click here](http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/) to see detail information about this plugin.	
+[Click here](http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/) to see detailed information about this plugin.	
 	
 == Installation ==
-
-**Installation Instruction & Configuration**  
 
 [See Installation Instruction and Configuration information and Demo](http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/)	   
 
 == Frequently Asked Questions ==
 
-**Q1. How to add this plugin in the widget sidebar?**
+Q1. How to add this plugin in the widget sidebar?
 
-**Q2. How to arrange the width and height of the gallery?**
+Q2. How to arrange the width and height of the gallery?
 
 [Answer page](http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/)			
-[Contact](http://www.gopiplus.com/work/2011/07/24/wordpress-plugin-wp-iframe-images-gallery/)	
 
 == Screenshots ==
 
@@ -96,6 +93,10 @@ Plugin *.po file (iframe-images.po) available in the languages folder. Translato
 
 1. Tested up to 3.9
 
+= 7.3 =
+
+1. Tested up to 4.0
+
 == Upgrade Notice ==
 
 = 1.0 =
@@ -139,3 +140,7 @@ Plugin *.po file (iframe-images.po) available in the languages folder. Translato
 = 7.2 =
 
 1. Tested up to 3.9
+
+= 7.3 =
+
+1. Tested up to 4.0

@@ -62,7 +62,7 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
         <thead>
           <tr>
             <th class="check-column" scope="row"><input type="checkbox" name="iframe_group_item[]" /></th>
-			<th scope="col"><?php _e('Title (Alt Text)', 'iframe-images'); ?></th>
+			<th scope="col"><?php _e('Title', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('URL', 'iframe-images'); ?></th>
 			<th scope="col"><?php _e('Type', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('Order', 'iframe-images'); ?></th>
@@ -72,7 +72,7 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
 		<tfoot>
           <tr>
             <th class="check-column" scope="row"><input type="checkbox" name="iframe_group_item[]" /></th>
-			<th scope="col"><?php _e('Title (Alt Text)', 'iframe-images'); ?></th>
+			<th scope="col"><?php _e('Title', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('URL', 'iframe-images'); ?></th>
 			<th scope="col"><?php _e('Type', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('Order', 'iframe-images'); ?></th>
