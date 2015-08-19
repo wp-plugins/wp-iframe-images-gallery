@@ -87,16 +87,45 @@ if ($iframe_error_found == FALSE && strlen($iframe_success) > 0)
 }
 ?>
 <script language="JavaScript" src="<?php echo WP_iframe_PLUGIN_URL; ?>/pages/setting.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($){
+    $('#upload-btn').click(function(e) {
+        e.preventDefault();
+        var image = wp.media({ 
+            title: 'Upload Image',
+            // mutiple: true if you want to upload multiple files at once
+            multiple: false
+        }).open()
+        .on('select', function(e){
+            // This will return the selected image from the Media Uploader, the result is an object
+            var uploaded_image = image.state().get('selection').first();
+            // We convert uploaded_image to a JSON object to make accessing it easier
+            // Output to the console uploaded_image
+            console.log(uploaded_image);
+            var img_imageurl = uploaded_image.toJSON().url;
+			var img_imagetitle = uploaded_image.toJSON().title;
+            // Let's assign the url value to the input field
+            $('#iframe_path').val(img_imageurl);
+			$('#iframe_title').val(img_imagetitle);
+        });
+    });
+});
+</script>
+<?php
+wp_enqueue_script('jquery'); // jQuery
+wp_enqueue_media(); // This will enqueue the Media Uploader script
+?>
 <div class="form-wrap">
 	<div id="icon-edit" class="icon32 icon32-posts-post"><br></div>
 	<h2><?php _e('iFrame Images Gallery', 'iframe-images'); ?></h2>
 	<form name="iframe_form" method="post" action="#" onsubmit="return iframe_submit()"  >
       <h3><?php _e('Add new image details', 'iframe-images'); ?></h3>
       <label for="tag-image"><?php _e('Enter image path (URL)', 'iframe-images'); ?></label>
-      <input name="iframe_path" type="text" id="iframe_path" value="" size="100" />
+      <input name="iframe_path" type="text" id="iframe_path" value="" size="80" />
+	  <input type="button" name="upload-btn" id="upload-btn" class="button-secondary" value="Upload Image">
       <p><?php _e('Where is the picture located on the internet', 'iframe-images'); ?> (ex: http://www.gopiplus.com/work/wp-content/uploads/pluginimages/250x167/250x167_2.jpg)</p>
       <label for="tag-link"><?php _e('Enter target link', 'iframe-images'); ?></label>
-      <input name="iframe_link" type="text" id="iframe_link" value="#" size="100" />
+      <input name="iframe_link" type="text" id="iframe_link" value="#" size="80" />
       <p><?php _e('When someone clicks on the picture, where do you want to send them. If you dont have any link enter #.', 'iframe-images'); ?></p>
       <label for="tag-target"><?php _e('Select target option', 'iframe-images'); ?></label>
       <select name="iframe_target" id="iframe_target">
@@ -107,7 +136,7 @@ if ($iframe_error_found == FALSE && strlen($iframe_success) > 0)
       </select>
       <p><?php _e('Do you want to open link in new window?', 'iframe-images'); ?></p>
       <label for="tag-title"><?php _e('Enter image title (Image alt text)', 'iframe-images'); ?></label>
-      <input name="iframe_title" type="text" id="iframe_title" value="" size="100" />
+      <input name="iframe_title" type="text" id="iframe_title" value="" size="80" />
       <p><?php _e('Enter image title, We are using this title for image alt text.', 'iframe-images'); ?></p>
       <label for="tag-select-gallery-group"><?php _e('Select gallery group', 'iframe-images'); ?></label>
 		<select name="iframe_type" id="iframe_type">

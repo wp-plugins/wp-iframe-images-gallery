@@ -4,6 +4,7 @@
 if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes')
 {
 	$did = isset($_GET['did']) ? $_GET['did'] : '0';
+	if(!is_numeric($did)) { die('<p>Are you sure you want to do this?</p>'); }
 	
 	$iframe_success = '';
 	$iframe_success_msg = FALSE;
@@ -61,7 +62,7 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
       <table width="100%" class="widefat" id="straymanage">
         <thead>
           <tr>
-            <th class="check-column" scope="row"><input type="checkbox" name="iframe_group_item[]" /></th>
+            <th class="check-column" scope="row" style="padding: 8px 2px;"><input type="checkbox" name="iframe_group_item[]" /></th>
 			<th scope="col"><?php _e('Title', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('URL', 'iframe-images'); ?></th>
 			<th scope="col"><?php _e('Type', 'iframe-images'); ?></th>
@@ -71,7 +72,7 @@ if (isset($_POST['frm_iframe_display']) && $_POST['frm_iframe_display'] == 'yes'
         </thead>
 		<tfoot>
           <tr>
-            <th class="check-column" scope="row"><input type="checkbox" name="iframe_group_item[]" /></th>
+            <th class="check-column" scope="row" style="padding: 8px 2px;"><input type="checkbox" name="iframe_group_item[]" /></th>
 			<th scope="col"><?php _e('Title', 'iframe-images'); ?></th>
             <th scope="col"><?php _e('URL', 'iframe-images'); ?></th>
 			<th scope="col"><?php _e('Type', 'iframe-images'); ?></th>
